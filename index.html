@@ -205,10 +205,80 @@ footer{
 .nav:hover{
   color:#ff4d4d;
 }
+
+/* LOADER */
+#loader{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width:100%;
+  height:100%;
+  background:#050505;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  z-index:9999;
+  flex-direction:column;
+}
+
+/* CONTENT */
+.loader-content{
+  text-align:center;
+}
+
+/* 3D CUBE */
+.cube{
+  position:relative;
+  width:80px;
+  height:80px;
+  transform-style:preserve-3d;
+  animation:rotate 4s infinite linear;
+}
+
+.cube div{
+  position:absolute;
+  width:80px;
+  height:80px;
+  background:linear-gradient(45deg,#ff0055,#ff4d4d);
+  border:2px solid rgba(255,255,255,0.2);
+  box-shadow:0 0 20px rgba(255,0,80,0.6);
+}
+
+/* CUBE SIDES */
+.cube div:nth-child(1){ transform:translateZ(40px); }
+.cube div:nth-child(2){ transform:rotateY(90deg) translateZ(40px); }
+.cube div:nth-child(3){ transform:rotateY(180deg) translateZ(40px); }
+.cube div:nth-child(4){ transform:rotateY(-90deg) translateZ(40px); }
+.cube div:nth-child(5){ transform:rotateX(90deg) translateZ(40px); }
+.cube div:nth-child(6){ transform:rotateX(-90deg) translateZ(40px); }
+
+/* ROTATION */
+@keyframes rotate{
+  0%{ transform:rotateX(0) rotateY(0); }
+  100%{ transform:rotateX(360deg) rotateY(360deg); }
+}
+
+/* TEXT */
+.loader-content h2{
+  margin-top:20px;
+  font-size:20px;
+  color:white;
+  letter-spacing:2px;
+}
 </style>
 </head>
 
 <body>
+
+  <div id="loader">
+  <div class="loader-content">
+    <div class="cube">
+      <div></div><div></div><div></div>
+      <div></div><div></div><div></div>
+    </div>
+    <h2>Vertex App</h2>
+  </div>
+</div>
 
 <!-- HEADER -->
 <header>
@@ -411,6 +481,25 @@ function startAutoSlide(){
 function stopAutoSlide(){
   clearInterval(interval);
 }
+
+window.addEventListener("load", () => {
+  const loader = document.getElementById("loader");
+
+  // delay for premium feel
+  setTimeout(() => {
+    loader.style.opacity = "0";
+    loader.style.transition = "0.6s ease";
+
+    setTimeout(() => {
+      loader.style.display = "none";
+      document.body.style.overflow = "auto";
+    }, 600);
+
+  }, 1200); // adjust time
+});
+
+/* disable scroll while loading */
+document.body.style.overflow = "hidden";
 </script>
 
 </body>
