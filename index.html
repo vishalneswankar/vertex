@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="img/favicon.png" type="image/png">
+<title>Vertex App</title>
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#050505;
+  color:white;
+  overflow-x:hidden;
+}
+
+/* HEADER */
+header{
+  position:fixed;
+  top:0;
+  width:96%;
+  height:100px;
+  backdrop-filter:blur(12px);
+  background:rgba(0,0,0,0.6);
+  text-align: center;
+  padding:0 40px;
+  z-index:100;
+}
+
+header a{
+  color:#aaa;
+  margin-left:20px;
+  text-decoration:none;
+}
+
+header img {
+  width: 120px;
+}
+
+header a:hover{
+  color:white;
+}
+
+/* SECTION */
+.section{
+  height:150vh;
+  position:relative;
+  margin-top: 50px;
+}
+
+/* PARALLAX BG */
+.parallax{
+  position:absolute;
+  width:100%;
+  height:120%;
+  top:0;
+  left:0;
+  background-size:cover;
+  background-position:center;
+  z-index:-1;
+}
+
+/* OVERLAY */
+.overlay{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.3));
+}
+
+/* CONTENT */
+.content{
+  position:sticky;
+  top:60px;
+  height:calc(100vh - 60px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+/* CARD */
+.card{
+  background:rgba(255,255,255,0.05);
+  backdrop-filter:blur(20px);
+  padding:40px;
+  border-radius:20px;
+  border:1px solid rgba(255,255,255,0.1);
+  max-width:600px;
+  text-align:center;
+}
+
+/* TEXT */
+.card h1{
+  font-size:40px;
+}
+
+.card p{
+  margin-top:15px;
+  color:#ccc;
+  line-height:1.6;
+}
+
+/* BUTTONS */
+.buttons{
+  margin-top:25px;
+  display:flex;
+  gap:15px;
+  justify-content:center;
+  flex-wrap:wrap;
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 22px;
+  border-radius:12px;
+  text-decoration:none;
+  color:white;
+  font-weight:bold;
+  transition:0.3s;
+  font-size:14px;
+}
+
+/* GLOW BUTTON */
+.glow{
+  background:linear-gradient(90deg,#ff0055,#ff4d4d);
+  box-shadow:0 0 15px rgba(255,0,80,0.6);
+}
+
+.glow:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 30px rgba(255,0,80,1);
+}
+
+/* OUTLINE BUTTON */
+.outline{
+  border:1px solid #555;
+}
+
+.outline:hover{
+  background:#111;
+}
+
+/* FOOTER */
+footer{
+  padding:60px;
+  text-align:center;
+  color:#888;
+  background:#000;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+  <div><img src="img/logo.png" alt=""></div>
+</header>
+
+<!-- APP 1 -->
+<section class="section">
+  <div class="parallax" style="background-image:url('img/vellum3.png')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="card">
+      <h1>Vellum Studio</h1>
+      <p>All-in-one PDF toolkit. Convert, scan, compress and edit documents fully offline with complete privacy.</p>
+      <div class="buttons">
+        <a href="https://drive.google.com/file/d/1bEElKo4FiZg4IDdi3qG8eLRd44SlGEkg/view?usp=sharing" class="btn glow">
+          <i class="fa-brands fa-android"></i> Download APK
+        </a>
+        <a href="https://drive.google.com/file/d/1bEElKo4FiZg4IDdi3qG8eLRd44SlGEkg/view?usp=sharing" class="btn outline">
+          <i class="fa-brands fa-google-play"></i> Play Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP 2 -->
+<section class="section">
+  <div class="parallax" style="background-image:url('img/fincalc.png')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="card">
+      <h1>FinCalc</h1>
+      <p>EMI, SIP, GST and financial tools with smart projections and insights for better decision making.</p>
+      <div class="buttons">
+        <a href="https://drive.google.com/file/d/1DMY0cWbYKxE5rSsdQLFH5EN5VZajtd_t/view?usp=sharing" class="btn glow">
+          <i class="fa-brands fa-android"></i> Download APK
+        </a>
+        <a href="https://drive.google.com/file/d/1DMY0cWbYKxE5rSsdQLFH5EN5VZajtd_t/view?usp=sharing" class="btn outline">
+          <i class="fa-brands fa-google-play"></i> Play Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP 3 -->
+<section class="section">
+  <div class="parallax" style="background-image:url('img/codeSprint.png')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="card">
+      <h1>Code Sprint</h1>
+      <p>Learn programming with structured roadmap, quizzes and interview preparation for real-world jobs.</p>
+      <div class="buttons">
+        <a href="https://drive.google.com/file/d/1WjchqQ27AT8hx1p22deoaG3YTURc7rds/view?usp=sharing" class="btn glow">
+          <i class="fa-brands fa-android"></i> Download APK
+        </a>
+        <a href="https://drive.google.com/file/d/1WjchqQ27AT8hx1p22deoaG3YTURc7rds/view?usp=sharing" class="btn outline">
+          <i class="fa-brands fa-google-play"></i> Play Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APP 4 -->
+<section class="section">
+  <div class="parallax" style="background-image:url('img/rewardx.png')"></div>
+  <div class="overlay"></div>
+  <div class="content">
+    <div class="card">
+      <h1>RewardX</h1>
+      <p>Earn Bitcoin while playing games and daily events like spin , watch ads and offer walls</p>
+      <div class="buttons">
+        <a href="https://drive.google.com/file/d/1Q2i-Q9d-CjFgTAR9vSFihQI1lbixkTHe/view?usp=sharing" class="btn glow">
+          <i class="fa-brands fa-android"></i> Download APK
+        </a>
+        <a href="https://drive.google.com/file/d/1Q2i-Q9d-CjFgTAR9vSFihQI1lbixkTHe/view?usp=sharing" class="btn outline">
+          <i class="fa-brands fa-google-play"></i> Play Store
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <h3>Vertex App</h3>
+  <p>Modern Android tools for productivity</p>
+</footer>
+
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+/* PARALLAX */
+gsap.utils.toArray(".parallax").forEach(bg=>{
+  gsap.to(bg,{
+    y:-150,
+    ease:"none",
+    scrollTrigger:{
+      trigger:bg.parentElement,
+      start:"top bottom",
+      end:"bottom top",
+      scrub:true
+    }
+  });
+});
+
+/* FADE */
+gsap.utils.toArray(".card").forEach(el=>{
+  gsap.from(el,{
+    opacity:0,
+    y:80,
+    duration:1,
+    scrollTrigger:{
+      trigger:el,
+      start:"top 80%"
+    }
+  });
+});
+</script>
+
+</body>
+</html>
