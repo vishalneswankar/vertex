@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>RewardX Game</title>
+<style>
+  html,body{margin:0;padding:0;width:100%;height:100%;overflow:hidden;background:#0a0a1a;}
+  #frame{position:fixed;inset:0;width:100%;height:100%;border:0;display:block;background:#0a0a1a;}
+  #err{position:fixed;inset:0;display:none;align-items:center;justify-content:center;color:#fff;font-family:-apple-system,Roboto,Arial,sans-serif;text-align:center;padding:20px;}
+</style>
+</head>
+<body>
+<iframe id="frame" allow="autoplay; fullscreen; gamepad; accelerometer; gyroscope" allowfullscreen></iframe>
+<div id="err">⚠ No game ID provided. Open this page from the RewardX app.</div>
+<script>
+  // Read ?id=... from the URL. Strict whitelist: 32 lowercase hex chars only.
+  // Prevents anyone from using this wrapper to embed arbitrary content.
+  var params = new URLSearchParams(location.search);
+  var id = (params.get('id') || '').toLowerCase().replace(/\/+$/, '');
+  if (!/^[a-z0-9]{32}$/.test(id)) {
+    document.getElementById('frame').style.display = 'none';
+    document.getElementById('err').style.display = 'flex';
+  } else {
+    // Load the actual GameMonetize embed inside our domain's iframe.
+    // GameMonetize's ad server sees document.referrer = vertexapp0.netlify.app
+    // (this page's URL), the approved publisher domain → revenue is credited.
+    document.getElementById('frame').src = 'https://html5.gamemonetize.co/' + id + '/';
+  }
+</script>
+</body>
+</html>
